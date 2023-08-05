@@ -1,0 +1,96 @@
+this project was part of appointy Drive 
+
+Question # Cricket Pitch Booking System
+
+## Background
+
+A sports club located near Manchester UK, owns a large stadium with 3 cricket pitches available for booking by players and teams. Each pitch has a fixed capacity based on its size. When someone books a pitch, it reduces the available capacity. 
+
+(For ex: If a pitch has a capacity of 20 players and 5 players book it, it’s available capacity will reduce to 15 for that particular time slot) 
+
+Teams or players can book the pitch for any capacity and any duration for a particular date and time. 
+
+Currently, bookings are made over the phone. However, due to an increasing number of calls from customers just inquiring about availability, the management has decided to implement an online scheduling system. This system will allow customers to check pitch availability and make bookings online whenever they want.
+
+## Problem Statement
+
+Arjun, one of the players from the academy had some software engineering skills and decided to build 6 APIs to develop this booking system. But after some time, he had to leave the project midway after completing 5 APIs. 
+
+Now it is your task to finish what he started and create the 6th and final “Availability API”. 
+
+**All reference to explore / access api are attached:**
+1. Detailed API documentation can be found: [Link](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/Mohit-Nathrani-at-appointy/test-api/main/api-spec.yaml).
+2. Postman collection and screenshot: [Link](https://drive.google.com/drive/folders/1yfTFj2bn79cE0bIAd8i1rdKlADJX5-QC?usp=sharing).
+3. Already generated few important struct required (in golang): [Link](https://github.com/Mohit-Nathrani-at-appointy/test-api/blob/main/structs.go)
+
+Short details of those 5 APIs already built:
+
+### 1. Allowed appointment durations API
+
+### GET http://api.internship.appointy.com:8000/v1/durations
+
+- Query parameters: None
+- Output: Array of durations (e.g., [30m, 60m, 120m])
+
+### 2. Resource API
+
+### GET http://api.internship.appointy.com:8000/v1/resources
+
+- Query parameters: None
+- Output: List of Resources
+
+<aside>
+🌀 "**Resource**" typically refers to an entity that can be scheduled or booked. It might represent a physical object, a place, or even a person's time.
+
+</aside>
+
+### 3. Business Hours API
+
+### GET http://api.internship.appointy.com:8000/v1/business-hours
+
+- Query parameters: resourceId, startTime, endTime
+- Output: List all Business hour for a resource Id between a start time and end time
+
+### 4. Block Hours API
+
+### GET http://api.internship.appointy.com:8000/v1/block-hours
+
+- Query parameters: resourceId, startTime, endTime
+- Output: List all Block hour for a resource Id between a start time and end time
+
+### 5. Appointment API
+
+### GET http://api.internship.appointy.com:8000/v1/appointments
+
+- Query parameters: resourceId, startTime, endTime
+- Output: List of Appointments for a resource Id between start time and end time
+
+<aside>
+💭 GET method is one of the HTTP methods used in REST APIs, and here's what it does:
+
+**The GET Method:** This is like asking for information about something. In the context of a REST API, when you use the GET method, you're requesting data from a specific resource or set of resources. It's akin to reading information without making any changes.
+
+</aside>
+
+## **Task:**
+
+**What is expected from you.** Find the time slots for a date and resource when the cricket pitch is available. An example for the same is also present in last.
+
+### Implement Availability API
+
+### Endpoint: GET localhost:8000/v1/availability
+
+### Input Query Parameters:
+
+- resourceId [Required]: ID of the pitch
+- date [Required]: date in YYYY-MM-DD format
+- duration [Required]: time duration in minutes (e.g., 30, 60, 120)
+- quantity [Required]:  capacity to reserve
+
+### Output
+
+- List of available slots
+- Time taken to find the available slots
+
+### Sequence diagram of the entire flow:
+
